@@ -1,36 +1,39 @@
 module SonosCli
   require_relative 'sonos_cli/version'
-  require 'sonos'
+  require_relative 'sonos_cli/sonos_client'
+  require_relative 'sonos_cli/spotify_client'
   require 'awesome_print'
   require 'thor'
 
   class Cli < Thor
     desc 'playing', 'Print the currently playing song'
     def playing
-      ap DoSonos.new.playing
-    end
-  end
-
-  class DoSonos
-    attr_reader :song
-
-    def initialize
-      speaker = Sonos::System.new.speakers.first
-      @song = speaker.now_playing
+      ap SonosClient.new.playing
     end
 
-    def playing
-      {
-        artist: get(:artist),
-        title: get(:title),
-        album: get(:album)
-      }
+    desc 'track TRACK_NAME', 'play track from spotify'
+    def track(search_string)
+      search_results = SpotifyClient.new.search_track(search_string)
+      output = ['Which of these tracks would you like to play?']
+      output.push(track_choices(search_results)).flatten
+      output.push('')
+
+      option = ask(output.join("\n"), limited_to: ('1'..'5').to_a)
+
+      sonos_client.track(search_results[option.to_i - 1].fetch(:id))
+      sonos_client.play
     end
 
     private
 
-    def get(thing)
-      song.fetch(thing, 'n/a')
+    def sonos_client
+      SonosClient.new
+    end
+
+    def track_choices(tracks)
+      tracks.map.with_index(1) do |track, index|
+        "[#{set_color(index, :green)}] #{set_color(track[:artist], :cyan)} - #{set_color(track[:track], :cyan)}"
+      end
     end
   end
 end

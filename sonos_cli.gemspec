@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Dean Barnett"]
   spec.email         = ["dean@shopkeep.com"]
   spec.summary       = %q{Control sonos form cli}
-  spec.description   = %q{Play songs on your sonos int he terminal}
+  spec.description   = %q{Play songs on your sonos in the terminal}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', "~> 3.0.0"
 
   spec.add_dependency "thor", "~> 0.19.1"
-  spec.add_dependency "sonos", "~> 0.3.6"
+  spec.add_dependency "sonos", "= 0.3.6"
   spec.add_dependency "awesome_print", "~> 1.6.1"
+  spec.add_dependency "spotify-client", "~> 0.0.8"
 end
