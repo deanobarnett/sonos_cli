@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Dean Barnett"]
   spec.email         = ["dean@shopkeep.com"]
   spec.summary       = %q{Control sonos form cli}
-  spec.description   = %q{Play songs on your sonos int he terminal}
+  spec.description   = %q{Play songs on your sonos in the terminal}
   spec.homepage      = ""
   spec.license       = "MIT"
 
