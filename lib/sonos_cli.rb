@@ -1,36 +1,20 @@
 module SonosCli
   require_relative 'sonos_cli/version'
-  require 'sonos'
+  require_relative 'sonos_cli/sonos_client'
+  require_relative 'sonos_cli/spotify_client'
   require 'awesome_print'
   require 'thor'
 
   class Cli < Thor
     desc 'playing', 'Print the currently playing song'
     def playing
-      ap DoSonos.new.playing
-    end
-  end
-
-  class DoSonos
-    attr_reader :song
-
-    def initialize
-      speaker = Sonos::System.new.speakers.first
-      @song = speaker.now_playing
+      ap SonosClient.new.playing
     end
 
-    def playing
-      {
-        artist: get(:artist),
-        title: get(:title),
-        album: get(:album)
-      }
-    end
-
-    private
-
-    def get(thing)
-      song.fetch(thing, 'n/a')
+    desc 'play track', 'play track'
+    def track
+      # track = SpotifyClient.search_track(track)
+      # SonosClient.play track
     end
   end
 end
