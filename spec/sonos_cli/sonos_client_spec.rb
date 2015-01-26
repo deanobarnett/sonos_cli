@@ -32,4 +32,17 @@ describe SonosClient do
       expect(subject.playing[:album]).to eq('an album')
     end
   end
+
+  describe '#play' do
+    before(:each) do
+      allow(speaker).to receive(:add_spotify_to_queue) { 1 }
+    end
+
+    it 'adds the spotify track to the queue' do
+      subject.track('blah')
+      expect(speaker).to have_received(:add_spotify_to_queue).with('blah')
+    end
+
+    it { expect(subject.track('blah')).to be true }
+  end
 end

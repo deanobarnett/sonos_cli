@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec', "~> 3.0.0"
 
   spec.add_dependency "thor", "~> 0.19.1"
-  spec.add_dependency "sonos", "~> 0.3.6"
+  spec.add_dependency "sonos", "= 0.3.6"
   spec.add_dependency "awesome_print", "~> 1.6.1"
   spec.add_dependency "spotify-client", "~> 0.0.8"
 end
