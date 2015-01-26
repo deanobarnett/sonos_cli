@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/deanobarnett/sonos_cli.svg?branch=master)
+
 # SonosCli
 
 TODO: Write a gem description

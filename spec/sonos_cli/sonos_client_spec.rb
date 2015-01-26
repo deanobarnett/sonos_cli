@@ -4,7 +4,7 @@ describe SonosClient do
   let(:speaker) { double('speaker') }
 
   before(:each) do
-    Sonos::System.stub_chain(:new, :speakers, :first) { speaker }
+    allow(Sonos::System).to receive_message_chain(:new, :speakers, :first) { speaker }
   end
 
   describe '#playing' do
@@ -40,7 +40,7 @@ describe SonosClient do
 
     it 'adds the spotify track to the queue' do
       subject.track('blah')
-      expect(speaker).to have_received(:add_spotify_to_queue).with('blah')
+      expect(speaker).to have_received(:add_spotify_to_queue).with(id: 'blah')
     end
 
     it { expect(subject.track('blah')).to be true }

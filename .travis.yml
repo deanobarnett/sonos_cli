@@ -2,9 +2,13 @@ language: ruby
 cache: bundler
 
 rvm:
-  - 2.1.0
+  - 2.1.2
 
-script: 'bundle exec rspec spec'
+branches:
+  only:
+    - master
+
+script: 'bundle exec rake'
 
 notifications:
   email:
