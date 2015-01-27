@@ -8,7 +8,7 @@ branches:
   only:
     - master
 
-script: 'bundle exec rake'
+script: 'bundle exec rspec spec && bundle exec rake coveralls:push'
 
 notifications:
   email:
