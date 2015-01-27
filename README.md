@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.org/deanobarnett/sonos_cli.svg?branch=master)
+![Build Status](https://travis-ci.org/deanobarnett/sonos_cli.svg?branch=master) [![Coverage Status](https://coveralls.io/repos/deanobarnett/sonos_cli/badge.svg)](https://coveralls.io/r/deanobarnett/sonos_cli)
 
 # SonosCli
 
